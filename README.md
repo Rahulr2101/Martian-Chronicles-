@@ -4,4 +4,4 @@ This was my first app that I created on my own. In preparation for this app, I l
 
 
 ## Use this command to install requirement.txt.
-                                              pip install -r requirements.txt
+                                  pip install -r requirements.txt
