@@ -129,6 +129,8 @@ class Window(QMainWindow):
         self.Pageinput.resize(280,40)
         
         self.label = QLabel(self)
+        self.label.move(150,300)
+        self.label.resize(600, 550)
         
         #email page
         box=QLabel(self.label2)
@@ -228,7 +230,6 @@ class Window(QMainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
         self.file_name, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Images (*.png *.xpm *.jpg *.bmp *.gif);;All Files (*)", options=options)
-        self.img_list.append(self.file_name)
 
 
     def email(self):
@@ -258,6 +259,10 @@ class Window(QMainWindow):
             server.login(from_address, password)
             server.sendmail(from_address, to_address, message.as_string())
             server.quit()
+        movie = QMovie("send.gif")
+        self.label.setMovie(movie)
+        label.show()
+        movie.start()
 
 
         
@@ -346,7 +351,7 @@ class Window(QMainWindow):
 App = QApplication(sys.argv)
 window = Window()
 
-window.setStyleSheet("QMainWindow {background-image: url(background1.png);}")
+window.setStyleSheet("QMainWindow {background-image: url(background3.png);}")
 
 indx = 0
 
