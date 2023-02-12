@@ -1,5 +1,5 @@
+
 import requests
-from PIL import Image
 import urllib
 import shutil
 from PySide6.QtWidgets import *
@@ -9,15 +9,10 @@ from PySide6 import QtCore
 import sys
 import smtplib
 import base64
-import smtplib
-import base64
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email.mime.image import MIMEImage
-from dotenv import load_dotenv
 
 class FetchThread(QThread):
     fetch_signal = QtCore.Signal(list)
@@ -62,7 +57,6 @@ class Window(QMainWindow):
     def UiComponents(self):
 
          # Stacking of label
-
         
 
         self.stacked_widget = QStackedWidget(self)
@@ -139,7 +133,7 @@ class Window(QMainWindow):
         #email page
         box=QLabel(self.label2)
         box.setGeometry(1100, 100, 800, 900)
-        box.setStyleSheet("QLabel{ background-color : rgb(35, 36, 38)}")
+        box.setStyleSheet("QLabel{ background-color : rgba(35, 36, 38,89)}")
 
 
 
@@ -350,10 +344,13 @@ class Window(QMainWindow):
 
 
 App = QApplication(sys.argv)
-load_dotenv()
 window = Window()
-window.setStyleSheet("background-color: rgb(0, 0, 0);")
+
+window.setStyleSheet("QMainWindow {background-image: url(background1.png);}")
 
 indx = 0
 
 sys.exit(App.exec())
+# window.setStyleSheet("QMainWindow {background-image: url(background.png);}")
+
+
