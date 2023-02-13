@@ -6,6 +6,7 @@ from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
 from PySide6 import QtCore
+import time
 import sys
 import smtplib
 import base64
@@ -24,7 +25,7 @@ class FetchThread(QThread):
         self.page = page
 
     def run(self):
-        req = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol={self.sol}&page={self.page}&api_key=").json()
+        req = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol={self.sol}&page={self.page}&api_key=).json()
         photo_lst = []
         self.num = 0
         print(req)
@@ -107,6 +108,7 @@ class Window(QMainWindow):
         self.Solinput = QLineEdit(self.box1)
         self.Solinput.move(200, 90)
         self.Solinput.resize(280,40)
+        self.Solinput.setStyleSheet("background-color: rgba(28, 26, 28,100)")
 
         self.CameraLabel = QLabel(self.box1)
         
@@ -125,11 +127,12 @@ class Window(QMainWindow):
         self.PageLabel.move(140,200)
 
         self.Pageinput = QLineEdit(self.box1)
+        self.Pageinput.setStyleSheet("background-color: rgba(28, 26, 28,100)")
         self.Pageinput.move(200, 190)
         self.Pageinput.resize(280,40)
         
         self.label = QLabel(self)
-        self.label.move(150,300)
+        self.label.move(300,200)
         self.label.resize(600, 550)
         
         #email page
@@ -230,8 +233,9 @@ class Window(QMainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.ReadOnly
         self.file_name, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Images (*.png *.xpm *.jpg *.bmp *.gif);;All Files (*)", options=options)
-
-
+        
+        
+        
     def email(self):
         for x in self.toinput.text().split(","):
             from_address = "martianchronicles1990@gmail.com"
@@ -259,10 +263,10 @@ class Window(QMainWindow):
             server.login(from_address, password)
             server.sendmail(from_address, to_address, message.as_string())
             server.quit()
-        movie = QMovie("send.gif")
+         
+        movie = QMovie("sent.gif")
         self.label.setMovie(movie)
-        label.show()
-        movie.start()
+        movie.start()  
 
 
         
@@ -351,11 +355,9 @@ class Window(QMainWindow):
 App = QApplication(sys.argv)
 window = Window()
 
-window.setStyleSheet("QMainWindow {background-image: url(background3.png);}")
+window.setStyleSheet("QMainWindow {background-image: url(background.png);}")
 
 indx = 0
 
 sys.exit(App.exec())
 # window.setStyleSheet("QMainWindow {background-image: url(background.png);}")
-
-
