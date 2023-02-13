@@ -25,7 +25,7 @@ class FetchThread(QThread):
         self.page = page
 
     def run(self):
-        req = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol={self.sol}&page={self.page}&api_key=).json()
+        req = requests.get(f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol={self.sol}&page={self.page}&api_key=").json()
         photo_lst = []
         self.num = 0
         print(req)
@@ -108,7 +108,7 @@ class Window(QMainWindow):
         self.Solinput = QLineEdit(self.box1)
         self.Solinput.move(200, 90)
         self.Solinput.resize(280,40)
-        self.Solinput.setStyleSheet("background-color: rgba(28, 26, 28,100)")
+        self.Solinput.setStyleSheet("background-color: rgba(5, 5, 5,100)")
 
         self.CameraLabel = QLabel(self.box1)
         
@@ -117,6 +117,7 @@ class Window(QMainWindow):
 
         dropdown = QComboBox(self.box1)
         dropdown.addItems(["FHAZ", "RHAZ", "MAST","CHEMCAM","MAHLI","MARDI","NAVCAM","PANCAM","MINITES"])
+        dropdown.setStyleSheet("background-color: rgba(5, 5, 5,100)")
         dropdown.move(200, 150)
         dropdown.show()
         self.selected_value = dropdown.currentText()
@@ -127,7 +128,7 @@ class Window(QMainWindow):
         self.PageLabel.move(140,200)
 
         self.Pageinput = QLineEdit(self.box1)
-        self.Pageinput.setStyleSheet("background-color: rgba(28, 26, 28,100)")
+        self.Pageinput.setStyleSheet("background-color: rgba(5, 5, 5,100)")
         self.Pageinput.move(200, 190)
         self.Pageinput.resize(280,40)
         
@@ -149,6 +150,7 @@ class Window(QMainWindow):
         self.toLabel.move(50,100)
         self.toinput = QLineEdit(box)
         self.toinput.setFixedSize(600, 40)
+        self.toinput.setStyleSheet("background-color: rgba(5, 5, 5,100)")
         self.toinput.move(100, 100)
         self.toinput.resize(280,40)
 
@@ -157,12 +159,14 @@ class Window(QMainWindow):
         self.subLabel.setText('Subject:')
         self.subLabel.move(20,200)
         self.subinput = QLineEdit(box)
+        self.subinput.setStyleSheet("background-color: rgba(5, 5, 5,100);")
         self.subinput.setFixedSize(600, 40)
         self.subinput.move(100, 200)
         self.subinput.resize(280,40)
 
 
         self.boinput = QLineEdit(box)
+        self.boinput.setStyleSheet("background-color: rgba(5, 5, 5,100);")
         # self.boinput.setFixedSize(600, 550)
         self.boinput.setGeometry(100, 300, 600, 550)
         # self.boinput.move(100, 300)
