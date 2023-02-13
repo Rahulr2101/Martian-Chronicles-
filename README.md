@@ -8,3 +8,5 @@ This was my first app that I created on my own. In preparation for this app, I l
                                   
 ## Use this command to run the application.
                                           python3 main.py
+                                         
+## Preview.
